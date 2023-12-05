@@ -54,13 +54,16 @@ string getValidString(int max)
     do
     {
         fgets(input, max, stdin);
-        if(strchr(input, '\n') == NULL) {
-            clearStdin();
+        if (strchr(input, '\n') == NULL)
+        {
+            invalid = (getchar() != '\n');
+            if (invalid)
+                clearStdin();
         }
         strncpy(input, trim(input), max);
-        invalid = !checkMaxLength(input, max);
+        invalid = !checkMaxLength(input, max) || invalid;
         if (invalid)
-            printf("Exceed maximum length, please try again: ");
+            printf("Exceed %d characters length, please try again: ", max - 1);
     } while (invalid);
     return input;
 }

@@ -56,7 +56,8 @@ bool checkBirth(string str)
 
 bool checkPassport(string str)
 {
-    if(strlen(str) == 9 && checkDigits(str + 2, 7)) {
+    if (strlen(str) == 9 && checkDigits(str + 2, 7))
+    {
         return true;
     }
     if (strlen(str) == 10 && checkDigits(str + 2, 8))
@@ -103,9 +104,7 @@ string getValidDOB()
     string DOB;
     do
     {
-        DOB = getValidString(12);
-        // why 12? dd/mm/yyyy is 10 characters,
-        // but we need to add 2 more characters for the '\0' and the '\n' from fgets()
+        DOB = getValidString(11);
         if (!checkBirth(DOB))
         {
             printf("Invalid date, please try again: ");
