@@ -27,6 +27,10 @@ bool checkBirth(string str)
         return false;
     }
     year = strtol(++str, &str, 10);
+    if (month < 1 || month > 12 || year < 1900 || year > 2023)
+    {
+        return false;
+    }
     if (month <= 8 && month % 2 == 1 && day > 31)
     {
         return false;
@@ -107,7 +111,7 @@ string getValidDOB()
         DOB = getValidString(11);
         if (!checkBirth(DOB))
         {
-            printf("Invalid date, please try again: ");
+            printf("Invalid date format, please try again (dd/mm/yyyy): ");
         }
     } while (!checkBirth(DOB));
     return DOB;
@@ -132,7 +136,7 @@ User *getUser()
     User *user = (User *)malloc(sizeof(User));
     printf("Enter name: ");
     user->name = getValidName();
-    printf("Enter date of birth: ");
+    printf("Enter date of birth (dd/mm/yyyy): ");
     user->DOB = getValidDOB();
     printf("Enter passport: ");
     user->passport = getValidPassport();

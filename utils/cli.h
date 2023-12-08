@@ -50,9 +50,10 @@ string trim(string str)
 string getValidString(int max)
 {
     string input = (string)malloc(max * sizeof(char));
-    bool invalid = false;
+    bool invalid;
     do
     {
+        invalid = false;
         fgets(input, max, stdin);
         if (strchr(input, '\n') == NULL)
         {
